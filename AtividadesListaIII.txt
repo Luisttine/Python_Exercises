@@ -4,21 +4,21 @@
 n = int(input("Digite uma nota enre 0 e 10: "))
 
 while n < 0 or n > 10:
-    print("Sua nota n„o È v·lida!")
-    n = int(input("Digite uma nota v·lida: "))
+    print("Sua nota n√£o √© v√°lida!")
+    n = int(input("Digite uma nota v√°lida: "))
     
-print(f"Sua nota {n} È v·lida!!")
+print(f"Sua nota {n} √© v√°lida!!")
     
 #Atividade 2
 
-usuario = input("Digite um nome de usu·rio: ")
+usuario = input("Digite um nome de usu√°rio: ")
 senha = input("Digite uma senha: ")
 
 while senha == usuario:
     print("A senha pode facilmente ser descoberta!! Tente outra.")
     senha = input("Digite uma senha: ")
 
-print("Seu usu·rio e senha foram salvos.")
+print("Seu usu√°rio e senha foram salvos.")
 
 #Atividade 3
 
@@ -26,16 +26,16 @@ a = 80000
 b = 200000
 anos = 0
 
-while a < b:
-  a = 1 * 0.03
-  b = 1 * 0.015
+while a < b :
+  a = a * 0.03 + a
+  b = b * 0.015 + b
   anos = anos + 1
 
-print(f"Ser„o necess·rios {anos} anos para A alcanÁar B.")
+print(f"Ser√£o necess√°rios {anos} anos para A alcan√ßar B.")
 
 #Atividade 4
 
-n = int(input('Digite o seu n˙mero: '))
+n = int(input('Digite o seu n√∫mero: '))
 
 a, b = 1, 1
 i = 1
@@ -54,4 +54,4 @@ b = int(input("Digite um dos valores a serem calculados o mdc: "))
 while a % b != 0:
   a, b = b, a%b
 
-print(f"O mdc de seu n˙mero È: {b}")
+print(f"O mdc de seu n√∫mero √©: {b}")

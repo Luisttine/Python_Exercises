@@ -1,0 +1,25 @@
+# -*- coding: utf-8 -*-
+#Lista IV
+#Atividade 1
+
+import random
+
+x = random.sample(range(100), 10)
+
+x1 = x[0]
+
+for i in x:
+  x2 = i
+  if x1 < x2:
+    maior = x2
+    menor = x1
+    x1 = x2
+  else:
+    menor = x2
+    maior = x1
+
+print(f'{x1} é maior')
+print(f'{x2} é menor')
+
+#Atividade 2
+

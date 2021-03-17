@@ -23,3 +23,19 @@ print(f'{x2} é menor')
 
 #Atividade 2
 
+from random import sample
+
+k = sample(range(100), 20)
+par = []
+impar = []
+
+for i in k:
+    if i % 2 == 0:
+         par.append(k)
+    else:
+        impar.append(k)
+
+print(f'Essa é a lista {k}')
+print(f'Esses são os números pares {par}')
+print(f'Esses são os ímpares {impar}')
+

@@ -5,18 +5,13 @@
 import random
 
 x = random.sample(range(100), 10)
+x1 = x2 = x[0]
 
-x1 = x[0]
-
-for i in x:
-  x2 = i
-  if x1 < x2:
-    maior = x2
-    menor = x1
-    x1 = x2
-  else:
-    menor = x2
-    maior = x1
+for i in x[1:]:
+    if i > x1:
+        x1 = i 
+    if i < x2:
+        x2 = i
 
 print(f'{x1} é maior')
 print(f'{x2} é menor')
@@ -31,11 +26,28 @@ impar = []
 
 for i in k:
     if i % 2 == 0:
-         par.append(k)
+         par.append(i)
     else:
-        impar.append(k)
+        impar.append(i)
 
 print(f'Essa é a lista {k}')
 print(f'Esses são os números pares {par}')
 print(f'Esses são os ímpares {impar}')
 
+#Atividade 3
+
+
+from random import sample
+
+vetor1 = sample(range(100), 10)
+vetor2 = sample(range(100), 10)
+vetor = []
+
+for i in vetor1:
+    vetor.append(i)
+    for k in vetor2:
+        vetor.append(k)
+
+print(f'Primeiro vetor: {vetor1}')    
+print(f'Segundo vetor: {vetor2}')
+print(f'Vetor intercalado: {vetor}')

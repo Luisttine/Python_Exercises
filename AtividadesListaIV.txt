@@ -36,18 +36,16 @@ print(f'Esses são os ímpares {impar}')
 
 #Atividade 3
 
-
 from random import sample
 
 vetor1 = sample(range(100), 10)
 vetor2 = sample(range(100), 10)
 vetor = []
 
-for i in vetor1:
-    vetor.append(i)
-    for k in vetor2:
-        vetor.append(k)
+for i in zip(vetor1, vetor2):
+    vetor.extend(list(i))
 
+        
 print(f'Primeiro vetor: {vetor1}')    
 print(f'Segundo vetor: {vetor2}')
 print(f'Vetor intercalado: {vetor}')

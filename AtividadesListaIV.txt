@@ -49,3 +49,51 @@ for i in zip(vetor1, vetor2):
 print(f'Primeiro vetor: {vetor1}')    
 print(f'Segundo vetor: {vetor2}')
 print(f'Vetor intercalado: {vetor}')
+
+#Atividade 4
+
+a = '''The Python Software Foundation and the global
+   Python community  welcome  and  encourage participation
+   by everyone.  Our  community is  based  on mutual respect,
+   tolerance, and encouragement, and we are working to help each
+   other live up to  these  principles.  We  want our  community
+   to  be  more  diverse: whoever you  are,  and whatever  your
+   background, we welcome  you.'''.lower()
+lista = a.replace(',', '')
+lista = a.replace(':', '')
+lista = a.replace('.','')
+lista = a.split()
+resul = []
+
+for i in lista:    
+    if i[0] in 'python' or i[-1] in 'python':
+        resul.append(i)
+
+print(resul)
+
+#Atividade 5
+
+a = '''The Python Software Foundation and the global
+   Python community  welcome  and  encourage participation
+   by everyone.  Our  community is  based  on mutual respect,
+   tolerance, and encouragement, and we are working to help each
+   other live up to  these  principles.  We  want our  community
+   to  be  more  diverse: whoever you  are,  and whatever  your
+   background, we welcome  you.'''.lower()
+lista = a.replace(',', '')
+lista = a.replace(':', '')
+lista = a.replace('.','')
+lista = a.split()
+resul = []
+
+def py(x):
+    for i in x:
+        if i in 'python':
+            return True
+    return False
+for x in lista:
+    if py(x) and len(x) > 4:
+        resul.append(x)
+
+print(resul)
+print(len(resul))

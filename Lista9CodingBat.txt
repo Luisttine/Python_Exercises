@@ -58,7 +58,14 @@ def maior_ponta(nums):
 # retorna a soma dos dois primeiros elementos
 # se a lista tiver menos de dois elementos, soma o que for possível
 def sum2(nums):
-  return 
+    if len(nums) == 0:
+        return nums == 0
+    soma = 0
+    for i in nums[0:2]:
+        i = int(i)
+        soma = soma + i
+    return soma
+        
 
 # F. middle_way #
 # sejam duas listas de inteiros a e b
@@ -68,7 +75,9 @@ def sum2(nums):
 # middle_way([7, 7, 7], [3, 8, 0]) -> [7, 8]
 # middle_way([5, 2, 9], [1, 4, 5]) -> [2, 4]
 def middle_way(a, b):
-  return 
+    mid = len(a) // 2 and len(b) // 2
+    return [a[mid], b[mid]]
+    
 
 # G. date_fashion
 # você e sua namorada(o) vão a um restaurante
@@ -85,8 +94,13 @@ def middle_way(a, b):
 # date_fashion(5, 2) -> 0
 # date_fashion(5, 5) -> 1
 def date_fashion(eu, par):
-  return
-
+    if eu <= 2 or par <= 2:
+        return 0
+    elif eu >= 8 or par >= 8:
+        return 2
+    else:
+        return 1
+    
 # H. squirrel_play
 # os esquilos na FATEC brincam quando a temperatura está entre 60 e 90
 # graus Fahreneit (são estrangeiros e o termômetro é diferente rs)
@@ -96,7 +110,15 @@ def date_fashion(eu, par):
 # squirrel_play(95, False) -> False
 # squirrel_play(95, True) -> True
 def squirrel_play(temp, is_summer):
-  return
+    if is_summer == False:
+        if temp > 90 or temp < 60 :
+            return False
+        return True
+    if is_summer == True:
+        if is_summer < 100 or is_summer > 60:
+            return True
+        return False
+
 
 # I. pego_correndo
 # você foi pego correndo

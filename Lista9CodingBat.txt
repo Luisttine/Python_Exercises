@@ -107,12 +107,8 @@ def date_fashion(eu, par):
 # squirrel_play(95, False) -> False
 # squirrel_play(95, True) -> True
 def squirrel_play(temp, is_summer):
-    if is_summer == False and temp > 90 or temp < 60  :
-        return False
-    return True
-    if is_summer == True and temp < 100 or temp > 60:
-        return True
-    return False
+
+    return 60 <= temp <= 100 if is_summer else 60 <= temp <= 90
 
 
 # I. pego_correndo
@@ -150,12 +146,16 @@ def pego_correndo(speed, is_birthday):
 # alarm_clock(5, False) -> '7:00'
 # alarm_clock(0, False) -> '10:00'
 def alarm_clock(day, vacation):
-    if vacation and day in (0,6):
-        return 'off'
-    elif not vacation and day in (0,6):
-        return '07:00'
+    if vacation :
+        if day in (0,6):
+            return 'off'
+        else:
+            return '10:00'
     else:
-        return '10:00'
+        if day in (0,6):
+            return '10:00'
+        else:
+            return '7:00'
 
 # Provided simple test() function used in main() to print
 # what each function returns vs. what it's supposed to return.

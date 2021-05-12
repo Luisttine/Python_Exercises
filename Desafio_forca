@@ -1,0 +1,85 @@
+import random
+
+forca = ['''   -----+
+               |    |
+                    |
+                    |
+                    |
+                    |
+            --------+''',
+'''    -----+
+            |
+            |
+            |
+            |
+            |
+    --------+''',
+'''    -----+
+       |    |
+       O    |
+            |
+            |
+            |
+    --------+''',
+
+'''    -----+
+       |    |
+       O    |
+       |    |
+            |
+            |
+    --------+''',
+
+'''    -----+
+       |    |
+       O    |
+      /|    |
+            |
+            |
+    --------+''',
+'''    -----+
+       |    |
+       O    |
+      /|\   |
+            |
+            |
+    --------+''',
+
+'''    -----+
+       |    |
+       O    |
+      /|\   |
+      /     |
+            |
+    --------+''',
+
+'''    -----+
+       |    |
+       O    |
+      /|\   |
+      / \   |
+            |
+    --------+''']
+
+palavras = ['sorte', 'luis', 'anao']
+chute = input('Chute uma letra: ').lower()
+p = random.choice(palavras)
+para = 1
+final = ''
+cont = 0
+
+
+while para < len(p):
+    if chute in p:
+        print('Acertou um!!')
+        final = final + chute
+        para = para + 1
+        chute = input('Chute uma letra: ').lower()
+        print(final)
+    else:
+        print('Errou seu merda!!')
+        print(forca)
+        cont = cont + 1
+        chute = input('Tente outra letra letra: ').lower()
+
+                    

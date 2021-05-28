@@ -50,20 +50,36 @@ def inicio_final(a, b):
 # Verifique quantos zeros há no final de um número inteiro positivo
 # Exemplo: 10010 tem 1 zero no fim e 908007000 possui três
 def zf(n):
-    
+    cont = 0
+    n = str(n)
+    for i in n[::-1]:
+        if i == '0':
+            cont = cont + 1
+        else:
+            return cont
 
 # K. conta 2
 # Verifique quantas vezes o dígito 2 aparece entre 0 e n-1
 # Exemplo: para n = 20 o dígito 2 aparece duas vezes entre 0 e 19
 def conta2(n):
-  return
+    cont = 0
+    for k in range(n):
+        cont = cont + str(k).count('2')
+    return cont
 
 # L. inicio em potencia de 2
 # Dado um número inteiro positivo n retorne a primeira potência de 2
 # que tenha o início igual a n
 # Exemplo: para n = 65 retornará 16 pois 2**16 = 65536
 def inip2(n):
-  return
+    k = 1
+    p2 = 2
+    while True:
+        if str(p2).startswith(str(n)):
+            return k
+        else:
+            k = k +1
+            p2 = p2 * 2
 
 def test(obtido, esperado):
   if obtido == esperado:
@@ -108,5 +124,5 @@ def main():
   test(inip2(133), 316)
   test(inip2(1024), 10)
   
-if _name_ == '_main_':
+if __name__ == '__main__':
   main()

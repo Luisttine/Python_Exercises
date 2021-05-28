@@ -66,31 +66,36 @@ forca = [
         |
 --------+''']
 
-palavras = ['sorte', 'luis', 'anao']
-chute = input('Chute uma letra: ').lower()
+
+
 p = random.choice(palavras)
-final = ''
-cont = 0
+certas = ''
+erradas = ''
 para = 0
+cont = 0
+
 
 while para < len(p):
-    if chute in p:
-        final = final + chute
-        para = para + 1
-        if para == len(p):
-            print('Acertou um!!')
+
+    if para == len(p):
             print(final)
             break
-        print('Acertou um!!')
-        chute = input('Chute uma letra: ').lower()
-        print(final)
-            
-    else:
-        print('Errou seu merda!!')
-        print(forca[cont])
-        print(final)
-        cont = cont + 1
-        chute = input('Tente outra letra letra: ').lower()
+    print(f'Dica: começa com {p[0]} e termina com {p[-1]}')
+    chute = input('Chute uma letra: ').lower()
+
+    for x in p:
+        if  chute in certas+erradas:
+            chute = input('Essa é uma letra repetida, tente novamente: ').lower()
+        if x in chute:
+            print(x, end = ' ')
+            erradas = erradas + x
+            print('Acertou um!!')
+        else:
+            print('_', x, end = ' ')
+            certas = certas + x
+            para = para + 1
+            cont = cont + 1
+                   
     if cont == 8:
         print('Fim de jogo')
         stop = input('Para recomeçar digite 1 ou para sair digite 0: ')

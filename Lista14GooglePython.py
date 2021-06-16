@@ -47,20 +47,14 @@ def derivada(coef):
 # pode supor que n1 e n2 tem o mesmo número de dígitos
 # Não vale converter a lista em número para somar diretamente
 def soma(n1, n2):
-    lista = []
-    lista1 = []
-    final = []
-    soma = 0
-    for x, y in zip(n1[:-1], n2[:-1]):
-      lista.append(x)
-      lista.append(y)
-      if x+y <= 10:
-        x, y = 0, 0
-        final.append(x+y)
-        final.append(1+final[len(str(x))])
-      final.append(x+y)
-    return final
-  
+  r = []
+  v1 = 0
+  for x, y in zip(n1, n2):
+    n = (x + y) % 10 + v1
+    v1 = (x + y) // 10
+    r.append(n)
+  if v1 != 0: r.append(v1)
+  return r
         
 # H. Anagrama
 # Verifique se duas palavras são anagramas,
@@ -69,7 +63,7 @@ def soma(n1, n2):
 # anagrama('amor', 'ramo') = True
 # anagrama('aba', 'baba') = False
 def anagrama(s1, s2):
-  return 
+  return sorted(s1) == sorted(s2)
 
 def test(obtido, esperado):
   if obtido == esperado:

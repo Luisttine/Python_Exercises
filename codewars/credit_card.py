@@ -8,5 +8,6 @@ def maskify(cc):
     return x + ccf
 
 
+
 print(maskify('testando a codificacao'))
         

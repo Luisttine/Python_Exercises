@@ -1,15 +1,19 @@
 def duplicate_count(text):
+    text = text.lower()
+    if not text:
+        return 0
     repeats = []
+    r = 0
     for i in text:
-        ocur = text.count(i)
-        if ocur > 1:
+        if text.count(i) > 1:
             repeats.append(i)
-        else:
-            continue
-    for x in repeats:
-        print(f"{x} ocurres {text.count(x)}")
-        if len(repeats) > 1:
-              print("and")
-              continue
+            r = r+1
+        text = text.replace(i,"")
+        continue
+    if not repeats:
+        return 0
+    else:
+        return r
+        
 
 print(duplicate_count('abcab'))

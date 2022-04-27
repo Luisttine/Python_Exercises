@@ -8,16 +8,6 @@ def valid_braces(string):
         elif i in ["}", "]", ")"]:
             clo.append(i)
     x = 0
-    count = 0
-    while x < len(string)/2:
-        if ope[x]+clo[x] in ["{}", "[]", "()"]:
-            count = count+1
-        else:
-            print("PUTAAA")
-        x = x+1
-    if count != 0:
-        return True
-    else:
-        return False
+    while x < len(string)/2
     
 print(valid_braces("{}()[]"))

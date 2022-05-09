@@ -1,0 +1,155 @@
+Python has a number of built-in data structures:
+- Strings
+- Lists
+- Dictionaries
+- Tuples
+- Sets
+
+The most prominent data structures are:
+- Stacks
+- Queues
+- Trees
+- Linked Lists
+
+LIST FUNCTIONS
+
+append(item) adds an item to the end of the list.
+insert(index, item) adds an item at the given index in the list.
+remove(item) removes an item from the list.
+pop(index) removes the item at the given index.
+count(item) returns a count of how many times an item occurs in the list.
+
+reverse() reverses items in the list.
+sort() sorts the list. By default, the list is sorted ascending. You can specify reverse=True as the parameter, to sort descending.
+max(list) returns the maximum value.
+min(list) returns the minimum value.
+
+
+LIST COMPREHENSION
+
+cubes = [i**3 for i in range(5)]
+
+
+LIST COMPREHENSION WITH IF STATEMENT
+
+faça i**2 se o if for True
+evens=[i**2 for i in range(10) if i**2 % 2 == 0]
+
+
+DICTIONARIES
+
+Each element in a dictionary is represented by a key:value pair.
+ex.:
+ages = {24: "dave", "Mary": 42, "John": 58}
+print(ages[24])
+print(ages["Mary"])
+*******OUTPUT*******
+dave
+42
+
+You can use strings, integers, booleans and any other immutable type
+as dictionary keys.
+This means that you cannot use lists or dictionaries as keys.
+
+We can use in and not in too, using the index or the value of the dictionary
+nums = {
+    1: "one",
+    2: "two",
+    3: "three",
+}
+print(1 in nums)
+print("three" in nums)
+print(4 not in nums)
+
+The get statement can be used in a dictionary using two arguments or only one.
+In two arguments the get will try to "get" the first argument, if it is not found
+the get will return the second argument.
+EX.:
+pairs = {1: "apple",
+  "orange": [2, 3, 4], 
+  True: False, 
+  12: "True",
+}
+
+print(pairs.get("orange"))
+print(pairs.get(7, 42))
+print(pairs.get(12345, "not found"))
+
+Podemos acessar os elementos usando a seguinte sintaxe
+dictionary[key][index_value]
+OU DE UM JEITO MAIS FACIL COM FUNÇÃO BUILD IN value()
+for value in data.values():
+
+
+TUPLES
+
+tuplas são declaradas como listas mas ao invés de brackets "[]" 
+usamos parentheses "()".
+The tuples are immutable, so we can't change any value in the tuple.
+We can access values like the lists, by the index.
+
+
+DESCOMPACTAÇÃO DE TUPLA - tupla unpacking
+
+Allows you to assign each item in a collection to a variable.
+EX.:
+numbers = (1, 2, 3)
+a, b, c = numbers
+print(a)
+print(b)
+print(c)
+1
+2
+3
+
+Variables that is prefaced with an asterisk takes all values from the collection
+that are left over from the other variables.
+EX.:
+a, b, *c, d = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(a)
+print(b)
+print(c)
+print(d)
+1
+2
+[3, 4, 5, 6, 7, 8]
+9
+
+
+SETS
+
+sets are collections of unordered items that are unique.
+Eles são criados com chaves "{}" e do jeito que são armazenados
+é muito rapido de verificar com in e not in.
+Sets cannot contain duplicates elements, if contains it will be removed
+automaticly.
+You can use the add() to add new items to the set, and remove()
+to delete a specific element.
+
+Sets can be combined using mathematical operations.
+The union operator | combines two sets to form a new one containing 
+items in either.
+The intersection operator & gets items only in both.
+The difference operator - gets items in the first set but not in the 
+second.
+The symmetric difference operator ^ gets items in either set, but not 
+both.
+| -> combine
+& -> only in both
+- -> first not second
+^ -> only diference
+EX.:
+first = {1, 2, 3, 4, 5, 6}
+second = {4, 5, 6, 7, 8, 9}
+
+print(first | second)
+print(first & second)
+print(first - second)
+print(second - first)
+print(first ^ second)
+{1, 2, 3, 4, 5, 6, 7, 8, 9}
+{4, 5, 6}
+{1, 2, 3}
+{8, 9, 7}
+{1, 2, 3, 7, 8, 9}
+

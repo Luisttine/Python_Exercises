@@ -153,3 +153,141 @@ print(first ^ second)
 {8, 9, 7}
 {1, 2, 3, 7, 8, 9}
 
+
+STACK - pilhas
+
+A stack is a simple data structure that adds and removes elemements in a particular order.
+Using the LIFO system (Last In, First Out)
+
+To add a new element is called push
+And removing is pop
+
+We use a list called items to store our elements
+.insert(position, item) to add an element
+.pop(position)
+EX.:
+class Stack:
+    def __init__(self):
+        self.items = []  
+  
+    def is_empty(self):
+        return self.items == []
+  
+    def push(self, item):
+        self.items.insert(0, item)
+    
+    def pop(self):
+        return self.items.pop(0)
+    
+    def print_stack(self):
+        print(self.items)
+    
+s = Stack()
+s.push('a')
+s.push('b')
+s.push('c')
+s.print_stack()
+
+s.pop()
+s.print_stack()
+
+
+QUEUE - fila
+
+The elements are inserted form one end, called the rear
+And deleted from the other end, called the front
+This behavior is called FIFO (First In First Out)
+EX.:
+class Queue:
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        return self.items == []
+
+    def enqueue(self, item):
+        self.items.insert(0, item)
+
+    def dequeue(self):
+        return self.items.pop()
+
+    def print_queue(self):
+        print(self.items)
+
+q = Queue()
+q.enqueue('a')
+q.enqueue('b')
+q.enqueue('42')
+q.print_queue()
+
+q.dequeue()
+q.print_queue()
+
+
+LINKED LIST - listas linkadas
+
+A linked list is a sequence of node (nó) stores its own data and a link to the next node.
+The first node is called the head
+The last node must have its link pointing to None to determine the end of the list
+EX.:
+class Node:
+    def __init__(self, data, next):
+        self.data = data
+        self.next = next
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    
+    def add_at_front(self, data):
+        self.head = Node(data, self.head)      
+
+    def add_at_end(self, data):
+        if not self.head:
+            self.head = Node(data, None)
+            return
+        curr = self.head
+        while curr.next:
+            curr = curr.next
+        curr.next = Node(data, None)
+
+    def get_last_node(self):
+        n = self.head
+        while(n.next != None):
+            n = n.next
+        return n.data
+
+    def is_empty(self):
+        return self.head == None
+
+    def print_list(self):
+        n = self.head
+        while n != None:
+            print(n.data, end = " => ")
+            n = n.next
+        print()
+
+
+s = LinkedList()
+s.add_at_front(5)
+s.add_at_end(8)
+s.add_at_front(9)
+
+s.print_list()
+print(s.get_last_node())
+
+9 => 5 => 8 => 
+8
+
+
+GRAFOS
+
+Graphs are used to represent many real-life applications like networks. transportation paths of a city, and social network connections
+A graph is a set of connected nodes where each node is called a VERTEX and the connection between two of them is called EDGE
+
+a=0
+for i in range(len(x.adj)):
+	if i+1 == n:
+		for j in x.adj[i]
+			if j==1:
+				a+=1

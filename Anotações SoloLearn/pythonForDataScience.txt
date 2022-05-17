@@ -1,0 +1,21 @@
+DATA SCIENCE 
+
+MEAN - média dos números da lista
+MEDIAN - valor do meio de uma lista ordenada
+[12, 14, *2*, 65, 45]
+Caso haja uma lista com quantidade de elementos par, somamos e tiramos
+a média entre os dois numeros do meio.
+[5, *10, 10*, 20] -> 10+10 = 20/2 = 10
+
+DESVIO PADRÃO
+O Desvio Padrão é uma medida de quão espalhados são nossos dados.
+Para calculá-lo, primeiro precisamos calcular um valor chamado
+Variância: que é a média das diferenças quadradas da média .
+A média é 33,1 . Para calcular a variância, pegamos a diferença entre 
+cada valor e a média, elevamos ao quadrado, e então calculamos a média 
+do resultado: Variância = 292,5 Agora tiramos a raiz quadrada da 
+Variação, para obter o Desvio Padrão: std = 17,1 Agora, nós pode 
+verificar quais idades estão dentro de um desvio padrão (17,1) da média
+(33,1) - de (33,1-17,1) a (33,1+17,1).
+Um alto valo de desvio padrão mostra que os valores em nosso conjunto de dados
+estão mais longes da média

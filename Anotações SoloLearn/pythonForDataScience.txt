@@ -17,5 +17,174 @@ do resultado: Variância = 292,5 Agora tiramos a raiz quadrada da
 Variação, para obter o Desvio Padrão: std = 17,1 Agora, nós pode 
 verificar quais idades estão dentro de um desvio padrão (17,1) da média
 (33,1) - de (33,1-17,1) a (33,1+17,1).
-Um alto valo de desvio padrão mostra que os valores em nosso conjunto de dados
+Um alto valor de desvio padrão mostra que os valores em nosso conjunto de dados
 estão mais longes da média
+
+PARA SABER QUEM ESTÁ DENTRO DO DESVIO PADRÃO BASTA VERIFICAR COM (average-std < x < average+std)
+
+
+NumPy Array
+NumPy provides an array strcuture for performin operations with data and 
+they are faster adn more compact than a list.
+import numpy as np
+x = np.array([1, 2, 3, 4])
+
+Numpy arrays are homogeneous, meaning they can contain an only type
+of data.
+
+Numpy arrays are often called ndarrays, which stands for "N-dimensional array",
+beacause they can have mutiple dimensions. For example:
+x = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(x[1][2])
+
+Arrays have properties, whic can be accessed using a dot.
+ndim returns the number of dimensions of the array;
+size returns the total number of elements of the array;
+shape returns a tuple of integers that indicate the number of elements
+stored along each dimension of the array.
+x = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) 
+print(x.ndim) # 2
+print(x.size) # 9
+print(x.shape) # (3, 3)
+
+We can add, remove and sort an array using the np.append(), np.delete() 
+and np.sort() functions.
+Ever setting 2 arguments to delete and append -> (array, element)
+np.arange() -> allows you to create an array that contains a range of
+evenly spaced intervals (similiar to a Python range)
+x = np.arange(2, 10, 3)
+
+
+RESHAPE
+We can change our array of 1 dimension to 3x2 for example:
+x = np.arange(1, 7)
+z = x.reshape(3, 2)
+OBS.: the number of rows and columns have to be the same os the first array
+x = 1 = 6
+z = 3x2 = 6
+
+Reshape can also do the opposite: take a 2-dimensional array and make 
+a 1-dimensional array from it:
+x = np.array([[1, 2], [3, 4], [5, 6]])
+z = x.reshape(6)
+
+OBS.:The same result can be achieved using the flatten() function.
+
+
+CONDITION
+You can provide a condition as the index to select the elements that 
+fulfill the given condition.
+x = np.arrange(1, 10)
+print(x[x<4])
+
+Conditions can be combined using the & (and) and | (or) operators.
+print(x[(x>5) & (x%2==0)])
+
+The condition can also be assigned to a variable, which will be an array of boolean values showing whether or not the values in the array fulfill the condition:
+y = (x>5) & (x%2==0)
+
+
+BROADCASTING 
+We can also perform operations between the array and a single number.
+x = np.arange(1, 10)
+y = x*2
+That will multiply each element in x by 2 and save in the variable y.
+The multiply each element is called broadcasting.
+Similarly, min() and max() can be used to get the smallest and largest 
+elements.
+
+
+STATISTICS
+
+Remember the summary statistics we learned in the previous module? Those
+included mean, median, variance and standard deviation.
+x = np.array([14, 18, 19, 24, 26, 33, 42, 55, 67])
+
+print(np.mean(x))
+print(np.median(x))
+print(np.var(x))
+print(np.std(x))
+
+
+PANDAS 
+
+Pandas is one of the most popular data science libraries in python.
+With Pandas, you can read and extract data from files, transform and 
+analyze it, calculate statistics and correlations, and much more!
+
+The two primary components of pandas are the Series and the DataFrame.
+
+A Series is essentially a column, and a DataFrame is a multi-dimensional
+table made up of a collection of Series.
+Series = atributes
+DataFrame = entities
+
+The easiest way to create a DataFrame is using a dictionary:
+data = {
+   'ages': [14, 18, 24, 42],
+   'heights': [165, 180, 176, 184]
+}
+
+Each key is a column, while the value is an array representing the data
+for that column.
+Now, we can pass this dictionary to the DataFrame constructor
+df = pd.DataFrame(data)
+
+We can specify a custom index, when creating the DataFrame:
+df = pd.DataFrame(data, index=['James', 'Bob', 'Amy', 'Dave'])
+Now we can access a row using its index and the loc[] function:
+print(df.loc["Bob"])
+
+You can specify an single or multiple column using a list of names of the
+columns or a singe name of column.
+print(df["ages"])
+print(df[["ages", "heights"]]
+
+
+SLICE
+
+For slice panda uses iloc[] to select data based on its numeric index
+
+
+CONDITIONS
+
+For example, let's select all rows where age is greater than 18 and
+height is greater than 180:
+print(df[(df['ages']>18) & (df['heights']>180)])
+Similarly, the or | operator can be used to combine conditions.
+
+
+CSV
+
+It is quite common for data to come in a file format. One of de most popular
+formats is the CSV (comma-separted values).
+df = pd.read_csv("ca-covid.csv")
+We use the pd.read_csv() function to read a file in this format.
+Pandas also supports reading from JSON files, as well as SQL databases.
+
+We can get the first rows of the data using the head() function of the 
+DataFrame:
+print(df.head())
+By default it returns the first 5 rows. You can instruct it to return the 
+number of rows you would like as an argument (for example, df.head(10) 
+will return the first 10 rows).
+Similarly, you can get the last rows using the tail() function.
+
+The info() function is used to get essential information about your 
+dataset, such as number of rows, columns, data types, etc:
+df.info()
+
+We can set our own index column by using the set_index() function:
+df.set_index("date", inplace=True)
+               state  cases  deaths
+date                               
+25.01.20  California      1       0
+26.01.20  California      1       0
+27.01.20  California      0       0
+28.01.20  California      0       0
+29.01.20  California      0       0
+The inplace=True argument specifies that the change will be applied to 
+our DataFrame, without the need to assign it to a new DataFrame variable.
+drop() deletes rows and columns.
+axis=1 specifies that we want to drop a column.
+axis=0 will drop a row.

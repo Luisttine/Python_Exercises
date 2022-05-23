@@ -95,7 +95,6 @@ elements.
 
 
 STATISTICS
-
 Remember the summary statistics we learned in the previous module? Those
 included mean, median, variance and standard deviation.
 x = np.array([14, 18, 19, 24, 26, 33, 42, 55, 67])
@@ -106,8 +105,8 @@ print(np.var(x))
 print(np.std(x))
 
 
-PANDAS 
 
+PANDAS 
 Pandas is one of the most popular data science libraries in python.
 With Pandas, you can read and extract data from files, transform and 
 analyze it, calculate statistics and correlations, and much more!
@@ -132,6 +131,7 @@ df = pd.DataFrame(data)
 
 We can specify a custom index, when creating the DataFrame:
 df = pd.DataFrame(data, index=['James', 'Bob', 'Amy', 'Dave'])
+
 Now we can access a row using its index and the loc[] function:
 print(df.loc["Bob"])
 
@@ -142,12 +142,10 @@ print(df[["ages", "heights"]]
 
 
 SLICE
-
 For slice panda uses iloc[] to select data based on its numeric index
 
 
 CONDITIONS
-
 For example, let's select all rows where age is greater than 18 and
 height is greater than 180:
 print(df[(df['ages']>18) & (df['heights']>180)])
@@ -155,7 +153,6 @@ Similarly, the or | operator can be used to combine conditions.
 
 
 CSV
-
 It is quite common for data to come in a file format. One of de most popular
 formats is the CSV (comma-separted values).
 df = pd.read_csv("ca-covid.csv")
@@ -188,3 +185,143 @@ our DataFrame, without the need to assign it to a new DataFrame variable.
 drop() deletes rows and columns.
 axis=1 specifies that we want to drop a column.
 axis=0 will drop a row.
+
+
+CREATING COLUMNS 
+Pandas allows us to create our own columns.
+For example, we can add a month column based on the date column:
+df['month'] = pd.to_datetime(df['date'], format="%d.%m.%y").dt.month_name()
+
+We do this by converting the date column to datetime and extracting the 
+month name from it, assingning the value to our new new month column.
+
+SUMMARY STATISTICS
+The describe() function returns the summary statistics for all the numeric
+columns (todas as colunas q possuem somente numeros como valor)
+This function will show main statistics for the numeric columns, such as std,
+mean, min, max values, etc.
+
+
+GROUPING
+value_counts() returns how many times a value appears in the dataset, also 
+called frequency of the values.
+
+To group our data by the month column and then calculate the sum of the cases 
+column for each month:
+df.groupby('month')['cases'].sum()
+
+The gorupby() function is used to group our datase by the given column.
+We can also calculate the number of total cases in the entire year.
+df['cases'].sum()
+
+
+MATPLOTLIB
+Matplotlib is a libary used to create graphs, charts, and figures. It also
+provides functions to customize your figures by changing the colors, labels,
+etc.
+import matplotlib.pyplot as plt
+
+To create a "list" of elements to plot we use the pandas Series and the plot 
+function to create a plot from the data in a Pandas Series or DataFrame
+import matplotlib.pyplot as plt
+import pandas as pd
+
+s = pd.Series([18, 42, 9, 32, 81, 64, 3])
+s.plot(kind='bar')
+plt.savefig('plot.png')
+
+As we have not provided a custom index for our data, the default numeric index
+is used.
+plt.savefig('plot.png') is used to save and display the chart in our Code 
+Playground.
+In most environments this step is not needed, as calling the plot() function 
+automatically displays the chart.
+
+
+LINE PLOT
+We can also include multiple lines in our chart, for example including the deaths
+column in our Data Frame:
+(df[df['month']==12])[['cases', 'deaths']].plot()
+
+The legend to show the colors of the lines for the columns is added automatically
+by the matplolib
+
+
+BAR PLOT
+
+the plot() function can take a kind argument, specifying the type of the plot we 
+want to produce.
+For bar plots, provide kind="bar"
+(df.groupby('month')['cases'].sum()).plot(kind="bar")
+
+We can also plot multiple columns.
+The stacked property can be used to specify if the bars should be stacked on top
+of each other:
+df.plot(kind="barh", stacked=True)
+
+
+BOX PLOT 
+
+a box plot is used to visualize the distribution of values in a column, basically
+visualizing the result of the describe() function.
+df[df["month"]==6]["cases"].plot(kind="box")
+
+The green line shows the median value.
+The box shows the upper and lower quartiles (25% of the data is greater or less
+than these values).
+The circles show the outliers, while the black lines show the min/max values 
+excluding the outliers.
+
+
+HISTOGRAM
+
+SImilar to box plots, histograms show the distribution of data. 
+Visually histograms are similar to bar charts, however, they display frequencies
+for a group of daa rather than an individual data point; therefore, no spaces are
+presente beteween the bars.
+Typically, a histogram groups data into chunks (or bins).
+df[df["month"]==6]["cases"].plot(kind="hist") 
+
+The histogram grouped the data into 9 bins and shows their frequency. You can 
+see that, for example, only single data points are greater than 6000.
+You can manually specify the number of bins to use using the bins 
+attribute: plot(kind="hist", bins = 10)
+
+
+AREA PLOT 
+kind='area' creates an Area plot:
+df[df["month"]==6][["cases", "deaths"]].plot(kind="area", stacked=False)
+
+Area plots are stacked by default, which is why we provided stacked=False explicitly.
+
+
+SCATTER PLOT
+
+A scatter plot is used to show the relationship between two variables.
+For example, we can visualize how the cases/deaths are related:
+df[df["month"]==6][["cases", "deaths"]].plot(kind="scatter", x='cases', y='deaths')
+We need to specify the x and y columns to be used for the plot.
+
+
+PIE CHART
+We can create a pie chart using kind='pie'.
+df.groupby('month')['cases'].sum().plot(kind="pie")
+
+
+PLOT FORMATTING
+Matplotlib provides a number of arguments to customize your plot.
+The legend argument specifies whether or not to show the legend.
+You can also change the labels of the axis by setting the xlabel and ylabel
+arguments:
+df[['cases', 'deaths']].plot(kind="line", legend=True)
+plt.xlabel('Days in June')
+plt.ylabel('Number')
+
+The suptitle() function can be used to set a plot title:
+plt.suptitle("COVID-19 in June")
+
+We can also change the colors used in the plot by setting the color attribute. 
+It accepts a list of color hexes.
+For example, let's set the cases to blue, deaths to red colors:
+df[['cases', 'deaths']].plot(kind="area", legend=True, stacked=False, color=['#1970E7', '#E73E19'])
+
